@@ -24,9 +24,9 @@ const ProductDetails = ({product}:Products) => {
           {isAvailable?'Disponible':'No disponible'}
         </td>
         <td className="p-3 text-lg text-gray-800">
-          <div className="flex gap-2 items-center">
-          <PencilSquareIcon className="text-blue-300 hover:text-blue-500" onClick={()=>navigate(`/products/${product.id}/edit`)}/> {/* Función toma hacia donde va */}
-            <TrashIcon className="text-red-300 hover:text-red-500"/>
+          <div className="flex gap-2 justify-center items-center">
+          <PencilSquareIcon className="text-blue-300 hover:text-blue-500 w-[30px]" onClick={()=>navigate(`/products/${product.id}/edit`)}/> {/* Función toma hacia donde va */}
+            <TrashIcon className="text-red-300 hover:text-red-500 w-[30px]"/>
           </div>
         </td>
         
