@@ -49,4 +49,11 @@ Por ejemplo:
 
 https://mi-frontend.com/api/products y https://mi-frontend.com/api/products/1 son el mismo origen, incluso si las rutas son diferentes.
 
+Morgan es un middleware que va a estar logueando todas las peticiones, todas las interacciones que estamos haciedo en nuestra REST API
+Loaders React Router utiliza loaders para obtener datos de una API, similar a useEffect y colocar la respuesta en un state
+Para ello deberás crear una función y en tu router decirle que función debe ejecutarse en el loader.
 
+useLoaderData cuando quieras obtener el resultado de un loader, Este es especial para cargar información de una API.
+useActionLoader cuando quieras obtener el resultado de un action. Este es especial cuando trabajas con formularios
+A diferencia de link, link solo puede ser utilizado en la presentación en la parte del return , puede ser utilizado después de que  un usuario cierra sesion puede ser utilizadp después de que se llena un formulario
+useNavigate puede ser utilizado en el return o antes del return

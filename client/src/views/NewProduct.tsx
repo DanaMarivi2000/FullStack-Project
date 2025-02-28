@@ -1,4 +1,4 @@
-import { Form, Link, useActionData, ActionFunctionArgs } from "react-router-dom"
+import { Form, Link, useActionData, ActionFunctionArgs, redirect } from "react-router-dom"
 import ErrorMessage from "../components/ErrorMessage"
 import { addProduct } from "../services/ProductService"
 
@@ -15,7 +15,9 @@ export async function action({request}:ActionFunctionArgs){
     if(error.length){
         return error
     }
-    addProduct(data)
+    await addProduct(data)
+
+    return redirect("/") //Toma una url como string para redireccionar al usuario
 }
 
 
