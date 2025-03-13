@@ -57,3 +57,6 @@ useLoaderData cuando quieras obtener el resultado de un loader, Este es especial
 useActionLoader cuando quieras obtener el resultado de un action. Este es especial cuando trabajas con formularios
 A diferencia de link, link solo puede ser utilizado en la presentación en la parte del return , puede ser utilizado después de que  un usuario cierra sesion puede ser utilizadp después de que se llena un formulario
 useNavigate puede ser utilizado en el return o antes del return
+Los loaders son para obtener datos y los action para formularios
+UseFecher realiza las interacciones en la misma página para no tener que redireccionar al usuario
+Las acciones pertenecen a la URL a la cual se está ejeccutando

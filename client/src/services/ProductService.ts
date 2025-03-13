@@ -1,5 +1,6 @@
-import { safeParse } from "valibot"; //Validar
-import { DraftProductSchema, ProductsSchema } from "../types";
+import { safeParse} from "valibot"; //Validar
+import { DraftProductSchema, ProductSchema, ProductsSchema } from "../types";
+import { ProductOk } from "../types";
 import axios from "axios";
 
 type ProductData={
@@ -25,6 +26,27 @@ export const getProducts=async()=>{
     }
 }
 
+export const getProductById=async(id:ProductOk['id'])=>{
+    const url=`${import.meta.env.VITE_API_URL}/api/products/${id}`
+    console.log(url)
+    try{
+        const {data}=await axios(url)
+        console.log(data)
+        const response=safeParse(ProductSchema,data.data)
+        console.log(response)
+        if(response.success){
+            return response.output
+        }else{
+            throw new Error('Hubo un error')
+        }
+    }catch(error){
+        console.log(error)
+    }
+
+}
+
+
+
 export  const addProduct=async(data: ProductData)=>{
     const url= `${import.meta.env.VITE_API_URL}/api/products`
     
@@ -48,4 +70,46 @@ export  const addProduct=async(data: ProductData)=>{
         console.log(error)
     }
 
+}
+
+export const updateProduct=async(data:ProductData, id:ProductOk['id'])=>{
+ 
+   try{
+
+       const result=safeParse(ProductSchema,{
+           id,
+           name:data.name,
+           price:Number(data.price),
+           availability:Boolean(data.availability)
+        })
+        if(result.success){
+            const url=`${import.meta.env.VITE_API_URL}/api/products/${id}`
+            await axios.put(url, result.output)
+        }
+        console.log(result)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const updateAvailability=async(id:ProductOk['id'])=>{
+    try{
+        const url=`${import.meta.env.VITE_API_URL}/api/products/${id}`
+        await axios.patch(url,id)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+
+
+
+export const deleteProduct=async(id:ProductOk['id'])=>{
+    try{
+        const url=`${import.meta.env.VITE_API_URL}/api/products/${id}`
+        await axios.delete(url)
+    }catch(error){
+        console.log(error)
+    }
 }
